@@ -95,16 +95,16 @@ export function FilterBar({ filters, onFilterChange }: FilterBarProps) {
           <div className="space-y-1">
             <Label htmlFor="genre">Genre</Label>
             <Select
-              value={filters.genre || ""}
+              value={filters.genre || "all"}
               onValueChange={(value) => 
-                onFilterChange({ ...filters, genre: value === "" ? null : value })
+                onFilterChange({ ...filters, genre: value === "all" ? null : value })
               }
             >
               <SelectTrigger id="genre">
                 <SelectValue placeholder="All Genres" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Genres</SelectItem>
+                <SelectItem value="all">All Genres</SelectItem>
                 {genres.map((genre) => (
                   <SelectItem key={genre} value={genre}>
                     {genre}
@@ -117,16 +117,16 @@ export function FilterBar({ filters, onFilterChange }: FilterBarProps) {
           <div className="space-y-1">
             <Label htmlFor="rating">Min Rating</Label>
             <Select
-              value={filters.rating?.toString() || ""}
+              value={filters.rating?.toString() || "all"}
               onValueChange={(value) => 
-                onFilterChange({ ...filters, rating: value === "" ? null : Number(value) })
+                onFilterChange({ ...filters, rating: value === "all" ? null : Number(value) })
               }
             >
               <SelectTrigger id="rating">
                 <SelectValue placeholder="Any Rating" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Any Rating</SelectItem>
+                <SelectItem value="all">Any Rating</SelectItem>
                 {ratings.map((rating) => (
                   <SelectItem key={rating} value={rating.toString()}>
                     {rating}+ Stars
